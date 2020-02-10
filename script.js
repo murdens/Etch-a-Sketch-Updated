@@ -19,6 +19,7 @@ createGrid(16);
 
 
 clearButton.addEventListener('click', (e) => {
+  document.documentElement.style.overflow = 'auto';
   clear()
 })
 
@@ -29,6 +30,7 @@ function clear(){
 }
 
 canvasButton.addEventListener('click', (e) => {
+  document.documentElement.style.overflow = 'auto';
   let gridSize = prompt('selet a grid size between 1 and 100');
   inputCheck(gridSize);
   createGrid(gridSize);
@@ -37,7 +39,6 @@ canvasButton.addEventListener('click', (e) => {
 fillAction.forEach((button) => {
   button.addEventListener('click', (e) => {
     fill = button.id;
-     console.log(fill); 
     if (fill == 'draw'){
         fillMatrix();    
     } else if (fill == 'colour'){
@@ -59,18 +60,20 @@ const matrix = document.getElementsByClassName('box');
 
 function fillMatrix(){
   for (let i = 0; i < matrix.length; i++) { 
-    matrix[i].addEventListener(touchEvent(), function() {
-    matrix[i].classList.add('active');
-    matrix[i].style.backgroundColor = 'darkslategrey';
+    matrix[i].addEventListener('pointerenter', function() {
+      document.documentElement.style.overflow = 'hidden';
+      matrix[i].classList.add('active');
+      matrix[i].style.backgroundColor = 'darkslategrey';
     });
   }
 }
 
 function fillcolorMatrix(){
   for (let i = 0; i < matrix.length; i++) {
-    matrix[i].addEventListener(touchEvent(), function() {
-    matrix[i].classList.add('active');
-    matrix[i].style.backgroundColor= random_bg_color();
+    matrix[i].addEventListener('pointerenter', function() {
+      document.documentElement.style.overflow = 'hidden';
+      matrix[i].classList.add('active');
+      matrix[i].style.backgroundColor= random_bg_color();
     });
   }
 }
@@ -81,11 +84,4 @@ function random_bg_color() {
   var z = Math.floor(Math.random() * 256);
          
   return "rgb(" + x + "," + y + "," + z + ")";
-}
-
-function touchEvent(){
-  if ('ontouchstart' in document.documentElement === true)
-    return 'touchmove';
-  else 
-    return 'mouseenter';
 }

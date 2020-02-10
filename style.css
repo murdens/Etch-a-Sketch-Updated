@@ -2,9 +2,9 @@
 *{
     font-family: Arial, Helvetica, sans-serif;
     color: black;
+  pointer-events: none;
 }
 
-*{ touch-action: none; } 
 
 body {
   display: flex;
@@ -13,6 +13,7 @@ body {
   flex-direction: column;
   height:100%;
   width:100%;
+  
 }
 
 h1{
@@ -31,6 +32,7 @@ button {
   height: 30px;
   width: 100px;
   font-weight: bold;
+  pointer-events: auto;
 }
 
 #wrapper{
@@ -46,6 +48,7 @@ button {
   border: 3px solid darkslategrey;
   border-radius: 20px;
   background: crimson;
+  
 }
  
 #name {
@@ -65,8 +68,10 @@ button {
   
   border: 3px solid darkslategrey;
   border-radius: 5px;
+  
 }
 
 .box  {
   background-color: lightgrey;
+  pointer-events: auto;
 }
